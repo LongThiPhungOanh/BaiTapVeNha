@@ -1,6 +1,7 @@
 package Week2.Bai2;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -151,9 +152,8 @@ public class MaterialsManagement implements Discount {
             }
         }
     }
-
     @Override
-    public double getRealMoney() {
+    public double getRealMoney(){
         double total = 0;
         for (Material obj: listDiscount){
             if(obj instanceof Meat){
@@ -163,9 +163,10 @@ public class MaterialsManagement implements Discount {
                     total += obj.getCost() * 10/100 ;
                 }
             }else {
-                if(obj.getExpiryDate().compareTo(LocalDate.now()) <= 4 &&
-                        obj.getExpiryDate().compareTo(LocalDate.now()) > 2) total += obj.getCost() * 20 / 100;
-                else if(obj.getExpiryDate().compareTo(LocalDate.now()) <= 2){
+                Period period = Period.between(LocalDate.now(), obj.getManufacturingDate());
+                if(period.getMonths() <= 4 && period.getMonths() > 2){
+                    total += obj.getCost() * 20/100;
+                }else if(period.getMonths() <= 2){
                     total += obj.getCost() * 40/100;
                 }else {
                     total += obj.getCost() * 5/100;
