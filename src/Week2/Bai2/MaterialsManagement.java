@@ -90,7 +90,7 @@ public class MaterialsManagement implements Discount {
 
     public void showProduct() {
         for (Material check : listDiscount) {
-            System.out.println("Tất cả sản phẩm " + check.toString());
+            System.out.println("Tất cả sản phẩm " + check);
         }
     }
 
@@ -140,7 +140,6 @@ public class MaterialsManagement implements Discount {
         }
 
     }
-
     public void deleteProduct(){
         showProduct();
         System.out.println("Nhập id sản phẩm bạn muốn sửa");

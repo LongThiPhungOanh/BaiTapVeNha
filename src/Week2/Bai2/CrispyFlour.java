@@ -29,4 +29,13 @@ public class CrispyFlour extends Material {
         return manufacturingDate.plusYears(1);
 
     }
+
+    @Override
+    public String toString() {
+        return "CrispyFlour{" +
+                "quantity=" + quantity +
+                ", manufacturingDate=" + manufacturingDate +
+                ", cost=" + cost +
+                '}';
+    }
 }

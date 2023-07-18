@@ -16,7 +16,6 @@ public class Main{
            System.out.println("Nhấn 4 để xem tổng tiền sau chiết khấu");
            System.out.println("Nhấn 0 để thoát");
            choice = scanner.nextInt();
-       } while (choice != 0);{
            switch (choice){
                case 1:
                    materialsManagement.addProduct();
@@ -31,6 +30,8 @@ public class Main{
                    materialsManagement.showProduct();
                    break;
            }
+       } while (choice != 0);{
+
        }
     }
 }

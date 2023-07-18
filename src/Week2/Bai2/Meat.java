@@ -23,4 +23,13 @@ public class Meat extends Material{
     public LocalDate getExpiryDate() {
       return manufacturingDate.plusDays(7);
     }
+
+    @Override
+    public String toString() {
+        return "Meat{" +
+                "weight=" + weight +
+                ", manufacturingDate=" + manufacturingDate +
+                ", cost=" + cost +
+                '}';
+    }
 }
