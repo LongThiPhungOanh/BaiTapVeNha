@@ -27,7 +27,7 @@ public class Main{
                    materialsManagement.deleteProduct();
                    break;
                case 4:
-                   materialsManagement.showProduct();
+                   materialsManagement.Money();
                    break;
            }
        } while (choice != 0);{

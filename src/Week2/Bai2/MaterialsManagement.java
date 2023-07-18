@@ -87,13 +87,6 @@ public class MaterialsManagement implements Discount {
         System.out.println("---------------------------------");
         showProduct();
     }
-
-    public void showProduct() {
-        for (Material check : listDiscount) {
-            System.out.println("Tất cả sản phẩm " + check);
-        }
-    }
-
     public void editProduct() {
         showProduct();
         System.out.println("Nhập id sản phẩm bạn muốn sửa");
@@ -173,5 +166,13 @@ public class MaterialsManagement implements Discount {
             }
         }
         return total;
+    }
+    public void showProduct() {
+        for (Material check : listDiscount) {
+            System.out.println("Tất cả sản phẩm " + check);
+        }
+    }
+    public void Money(){
+        System.out.println("Tổng tiền sau chiết khấu " + getRealMoney());
     }
 }
