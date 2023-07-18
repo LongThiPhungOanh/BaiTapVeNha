@@ -157,7 +157,7 @@ public class MaterialsManagement implements Discount {
         for (Material obj: listDiscount){
             if(obj instanceof Meat){
                 if(obj.getExpiryDate().getDayOfMonth() - LocalDate.now().getDayOfMonth() <= 5){
-                    total += obj.getCost() * 30/100 ;
+                    total += obj.getCost() * 30/100;
                 }else {
                     total += obj.getCost() * 10/100 ;
                 }
