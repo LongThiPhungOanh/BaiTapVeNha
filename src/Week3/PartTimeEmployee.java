@@ -25,4 +25,9 @@ public class PartTimeEmployee extends Employee{
                 ", email ='" + email + '\'' +
                 ", address =" + address ;
     }
+
+    @Override
+    public int compareTo(Employee o) {
+        return 0;
+    }
 }

@@ -1,26 +1,33 @@
 package Week3;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 public class Management{
     private final Scanner input = new Scanner(System.in);
     List<Employee> listEmployee = new ArrayList<>();
     List<Address> listAddress = new ArrayList<>();
-    FullTimeEmployee fullTimeEmployee = new FullTimeEmployee();
     public Management() {
         listAddress.add(new Address("HaNoi","My Dinh" ,"Nam Tu Liem",13));
         listAddress.add(new Address("HaNoi","Cau Giay" ,"Dich Vong Hau",17));
         listEmployee.add(new FullTimeEmployee(1,"Nguyen Thi Ha", 24, 235244324
-                , "NguyenThiHa@.com",listAddress.get(0),2000000,1000000, 15000000));
+                , "NguyenThiHa@.com",listAddress.get(0),20000,10000, 150000));
         listEmployee.add(new PartTimeEmployee(2,"Dang Van Nam", 26,
                 244567624, "DangVanNam@.com", listAddress.get(1),72));
     }
-    public void MinMax(){
-        fullTimeEmployee.compareTo((FullTimeEmployee) listEmployee);
+    public void minMax() {
+        List<FullTimeEmployee> newFullTime = new ArrayList<>();
+        for (Employee employee : listEmployee) {
+            if (employee instanceof FullTimeEmployee) {
+                newFullTime.add((FullTimeEmployee) employee);
+            }
+        }
+        Collections.sort(newFullTime);
+        System.out.println(newFullTime + "\n");
     }
     public void addEmployee() {
         showList();
-        int employeeID = listEmployee.size();
+        int employeeID = listEmployee.size() + 1;
         System.out.println("Bạn muốn thêm mấy nhân viên");
         int length = Integer.parseInt(input.nextLine());
         for (int i = 0; i < length; i++) {
@@ -154,8 +161,6 @@ public class Management{
                     }
                 }
             }
-        } else {
-            System.out.println("Không có nhân viên để sửa");
         }
     }
     public void deleteEmployee(){
@@ -186,6 +191,18 @@ public class Management{
         float total = (float) (obj.getWorkingHours() * 1000000);
         System.out.println("Tổng tiền là lương nhân viên parttime: " + total);
     }
+    public Employee checkObj(){
+        System.out.println("Nhập vào id bạn muốn xem lương");
+        int id = input.nextInt();
+        int count = 0;
+        for (Employee employee : listEmployee) {
+            count++;
+            if (id == employee.getEmployeeID()) {
+                break;
+            }
+        }
+        return listEmployee.get(count);
+    }
     public float totalAvgSalaryAllEmployee(){
         float total = 0;
         for (Employee employee : listEmployee) {
@@ -210,7 +227,7 @@ public class Management{
         float total = 0;
         for (Employee employee : listEmployee) {
             if (employee instanceof PartTimeEmployee) {
-                total = (float) (((PartTimeEmployee) employee).getWorkingHours() * 1000000);
+                total += (float) (((PartTimeEmployee) employee).getWorkingHours() * 1000000);
             }
         }
         System.out.println("Tổng tiền phải trả cho nhân viên part time: " + total);

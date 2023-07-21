@@ -1,5 +1,5 @@
 package Week3;
-public abstract class Employee{
+public abstract class Employee implements Comparable<Employee> {
      int employeeID;
      String fullName;
      int age;
@@ -51,4 +51,5 @@ public abstract class Employee{
     public void setAddress(Address address) {
         this.address = address;
     }
+
 }
