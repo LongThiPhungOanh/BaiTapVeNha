@@ -11,7 +11,7 @@ public class Main{
        MaterialsManagement materialsManagement = new MaterialsManagement();
        do {
            System.out.println("Nhấn 1 để thêm");
-           System.out.println("Nhấn 2 để thêm");
+           System.out.println("Nhấn 2 để sửa");
            System.out.println("Nhấn 3 để xóa");
            System.out.println("Nhấn 4 để xem tổng tiền sau chiết khấu");
            System.out.println("Nhấn 0 để thoát");
