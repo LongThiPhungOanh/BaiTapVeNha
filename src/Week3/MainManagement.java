@@ -18,34 +18,19 @@ public class MainManagement {
             System.out.println("Nhân 8 để xem bảng lương của tất cả mọi người tăng dần");
             System.out.println("Nhấn 0 để thoát");
             choice = scanner.nextInt();
-            switch(choice){
-                case 1:
-                    management.addEmployee();
-                    break;
-                case 2:
-                    management.editEmployee();
-                    break;
-                case 3:
-                    management.deleteEmployee();
-                    break;
-                case 4:
-                    management.totalSalaryFullTime((FullTimeEmployee) management.checkObj());
-                    break;
-                case 5:
-                    management.totalSalaryPartTime( (PartTimeEmployee) management.checkObj());
-                    break;
-                case 6:
+            switch (choice) {
+                case 1 -> management.addEmployee();
+                case 2 -> management.editEmployee();
+                case 3 -> management.deleteEmployee();
+                case 4 -> management.totalSalaryFullTime((FullTimeEmployee) management.checkObj());
+                case 5 -> management.totalSalaryPartTime((PartTimeEmployee) management.checkObj());
+                case 6 -> {
                     management.totalAvgSalaryAllEmployee();
                     management.totalLowWages(management.totalAvgSalaryAllEmployee());
-                    break;
-                case 7:
-                    management.totalAllSalaryPay();
-                    break;
-                case 8:
-                    management.minMax();
-                    break;
-                case 0:
-                    System.exit(0);
+                }
+                case 7 -> management.totalAllSalaryPay();
+                case 8 -> management.minMax();
+                case 0 -> System.exit(0);
             }
         } while(true);
     }

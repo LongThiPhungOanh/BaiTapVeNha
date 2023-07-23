@@ -59,7 +59,7 @@ public class Management{
                 System.out.println("Nhập tiền lương cứng");
                 int SalaryFullTime = Integer.parseInt(input.nextLine());
                 Employee employeeFullTime = new FullTimeEmployee(employeeID++, nameEmployeeFullTime, ageFullTime,
-                phoneNumberFullTime, emailFullTime, addressFullTime,bonusFullTime,fineFullTime,SalaryFullTime);
+                        phoneNumberFullTime, emailFullTime, addressFullTime,bonusFullTime,fineFullTime,SalaryFullTime);
                 listEmployee.add(employeeFullTime);
             } else if (choice == 2){
                 System.out.println("Nhập tên");
@@ -82,7 +82,7 @@ public class Management{
                 System.out.println("Nhập số giờ làm");
                 int workingHoursPartTime = Integer.parseInt(input.nextLine());
                 Employee employeePartTime = new PartTimeEmployee(employeeID++, nameEmployeePartTime, agePartTime,
-                 phoneNumberPartTime, emailPartTime, addressPartTime, workingHoursPartTime);
+                        phoneNumberPartTime, emailPartTime, addressPartTime, workingHoursPartTime);
                 listEmployee.add(employeePartTime);
             }
         }
@@ -152,7 +152,7 @@ public class Management{
                         listAddress.get(i).setCommune(commune);
                         listAddress.get(i).setHouseNumber(houseNumber);
                         System.out.println("Nhập số giờ làm");
-                        int workingHours = Integer.parseInt(input.nextLine());;
+                        int workingHours = Integer.parseInt(input.nextLine());
                         listEmployee.get(i).setFullName(nameEmployee);
                         listEmployee.get(i).setAge(age);
                         listEmployee.get(i).setPhoneNumber(phoneNumber);
@@ -184,24 +184,30 @@ public class Management{
         }
     }
     public void totalSalaryFullTime(FullTimeEmployee obj){
-        float total = (float) (obj.getSalary() + (obj.getBonus() - obj.getFine()));
-        System.out.println("Tổng tiền là lương nhân viên fulltime: " + total);
+        if(obj == null){
+            System.out.println("không có nv này");
+        }else {
+            float total = (float) (obj.getSalary() + (obj.getBonus() - obj.getFine()));
+            System.out.println("Tổng tiền là lương nhân viên fulltime: " + total);
+        }
     }
     public void totalSalaryPartTime(PartTimeEmployee obj){
-        float total = (float) (obj.getWorkingHours() * 1000000);
-        System.out.println("Tổng tiền là lương nhân viên parttime: " + total);
+        if(obj == null){
+            System.out.println("không có nv này");
+        }else {
+            float total = (float) (obj.getWorkingHours() * 1000000);
+            System.out.println("Tổng tiền là lương nhân viên parttime: " + total);
+        }
     }
     public Employee checkObj(){
         System.out.println("Nhập vào id bạn muốn xem lương");
         int id = input.nextInt();
-        int count = 0;
         for (Employee employee : listEmployee) {
-            count++;
             if (id == employee.getEmployeeID()) {
-                break;
+                return employee;
             }
         }
-        return listEmployee.get(count);
+        return null;
     }
     public float totalAvgSalaryAllEmployee(){
         float total = 0;
@@ -211,7 +217,7 @@ public class Management{
             }
         }
         float avg = total / listEmployee.size();
-        System.out.println("Tổng tiền lương trung bình của nhân viên full time: " + avg);
+        System.out.println("Lương trung bình của nhân viên full time: " + avg);
         return avg;
     }
     public void totalLowWages(float totalAvgSalaryAllEmployee){
