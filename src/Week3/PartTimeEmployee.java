@@ -2,8 +2,7 @@ package Week3;
 public class PartTimeEmployee extends Employee{
     private double workingHours;
     public PartTimeEmployee(){};
-    public PartTimeEmployee(int employeeID, String dangVanNam, int age, int phoneNumber, String email, int i) {
-    }
+    public PartTimeEmployee(int employeeID, String dangVanNam, int age, int phoneNumber, String email, int i) {}
     public double getWorkingHours() {
         return workingHours;
     }
