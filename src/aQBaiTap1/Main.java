@@ -14,7 +14,7 @@ public class Main {
                 System.out.println("4. Edit product");
                 System.out.println("5. Display category");
                 System.out.println("6. Display Product");
-                System.out.println("7. Lowest Price Products");
+                System.out.println("7. Lowest Price Products and Most expensive price");
                 System.out.println("8. Search for product by name");
                 System.out.println("9. Search for product by price");
                 System.out.println("0. Exit");

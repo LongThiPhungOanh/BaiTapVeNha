@@ -37,6 +37,7 @@ public class ManagerProduct extends ManagerCategory {
                 Product newProduct = new Product(Product.getTemp(), nameProduct, priceProduct, newQuantity, categoryList.get(checkI));
                 productList.add(newProduct);
                 writeProduct(productList);
+                System.out.println("successful");
             }
             if (checkI < 0) {
                 System.out.println("Name not found");
@@ -46,7 +47,7 @@ public class ManagerProduct extends ManagerCategory {
         }
     }
     public void editProduct (int checkI) {
-        returnId();
+        displayProduct();
         try {
             if (checkI >= 0){
                 int checkId = -1;
@@ -64,6 +65,7 @@ public class ManagerProduct extends ManagerCategory {
                     Double priceProduct = Double.parseDouble(input.nextLine());
                     System.out.println("New quantity");
                     int newQuantity = Integer.parseInt(input.nextLine());
+                    productList = readProduct();
                     productList.get(checkId).setId(Product.getTemp());
                     productList.get(checkId).setName(nameProduct);
                     productList.get(checkId).setPrice(priceProduct);
@@ -90,6 +92,12 @@ public class ManagerProduct extends ManagerCategory {
         }
         return name;
     }
+    public void displayProduct(){
+        productList = readProduct();
+        for (Product product: productList) {
+            System.out.println(product);
+        }
+    }
     public void showProduct(String name) {
         try {
             boolean contains = false;
@@ -101,7 +109,9 @@ public class ManagerProduct extends ManagerCategory {
             } if (contains){
                 productList = readProduct();
                 for (Product display: productList) {
-                    System.out.println(display);
+                    if(display.getCategory().getName().equals(name)){
+                        System.out.println(display);
+                    }
                 }
             } else {
                 System.out.println("Name not found");
@@ -112,8 +122,11 @@ public class ManagerProduct extends ManagerCategory {
     }
     public List<Product> maxPrice(){
         List<Product> maxPrice = new ArrayList<>();
+        if(productList.size() == 0){
+            return maxPrice;
+        }
         double max = productList.get(0).getPrice();
-        for (int i = 1; i < productList.size(); i++) {
+        for (int i = 0; i < productList.size(); i++) {
             if (productList.get(i).getPrice() > max) {
                 max = productList.get(i).getPrice();
             }
@@ -127,8 +140,11 @@ public class ManagerProduct extends ManagerCategory {
     }
     public List<Product> minPrice(){
         List<Product> minPrice = new ArrayList<>();
+        if(productList.size()==0){
+            return minPrice;
+        }
         double min = productList.get(0).getPrice();
-        for (int i = 1; i < productList.size(); i++) {
+        for (int i = 0; i < productList.size(); i++) {
             if (productList.get(i).getPrice() < min) {
                 min = productList.get(i).getPrice();
             }
@@ -141,11 +157,19 @@ public class ManagerProduct extends ManagerCategory {
         return minPrice;
     }
     public void displayMaxMin(List<Product> max, List<Product> min){
-        for (Product maxPrice: max){
-            System.out.println("Most expensive products " + maxPrice);
+        if(max.size() > 0){
+            for (Product maxPrice: max){
+                System.out.println("Most expensive products " + maxPrice);
+            }
+         }else {
+            System.out.println("Currently no products available");
         }
-        for (Product minPrice: min){
-            System.out.println("lowest price products " + minPrice);
+         if (min.size()>0){
+            for (Product minPrice: min){
+                System.out.println("lowest price products " + minPrice);
+            }
+        } else {
+            System.out.println("Currently no products available");
         }
     }
     public void searchName(){

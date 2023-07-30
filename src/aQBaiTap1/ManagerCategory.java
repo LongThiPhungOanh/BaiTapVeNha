@@ -21,9 +21,11 @@ public class ManagerCategory {
                 }
             }
             if (!contains) {
+                categoryList = read();
                 Category category = new Category(newCategory);
                 categoryList.add(category);
                 write(categoryList);
+                System.out.println("successful");
             }else {
                 System.out.println("Category is duplicate");
             }
