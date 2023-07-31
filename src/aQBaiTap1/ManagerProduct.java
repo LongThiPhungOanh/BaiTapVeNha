@@ -26,7 +26,7 @@ public class ManagerProduct extends ManagerCategory {
         return checkI;
     }
     public void addProduct(int checkI) {
-       // returnId();
+        // returnId();
         try {
             if (checkI >= 0) {
                 System.out.println("Name");
@@ -127,9 +127,9 @@ public class ManagerProduct extends ManagerCategory {
             return maxPrice;
         }
         double max = productList.get(0).getPrice();
-        for (int i = 0; i < productList.size(); i++) {
-            if (productList.get(i).getPrice() > max) {
-                max = productList.get(i).getPrice();
+        for (Product value : productList) {
+            if (value.getPrice() > max) {
+                max = value.getPrice();
             }
         }
         for (Product product : productList) {
@@ -145,9 +145,9 @@ public class ManagerProduct extends ManagerCategory {
             return minPrice;
         }
         double min = productList.get(0).getPrice();
-        for (int i = 0; i < productList.size(); i++) {
-            if (productList.get(i).getPrice() < min) {
-                min = productList.get(i).getPrice();
+        for (Product value : productList) {
+            if (value.getPrice() < min) {
+                min = value.getPrice();
             }
         }
         for (Product product : productList) {
@@ -162,10 +162,10 @@ public class ManagerProduct extends ManagerCategory {
             for (Product maxPrice: max){
                 System.out.println("Most expensive products " + maxPrice);
             }
-         }else {
+        }else {
             System.out.println("Currently no products available");
         }
-         if (min.size()>0){
+        if (min.size()>0){
             for (Product minPrice: min){
                 System.out.println("lowest price products " + minPrice);
             }
