@@ -226,11 +226,5 @@ public class ManagerProduct extends ManagerCategory {
         }
         return products;
     }
-    public int getId(){
-        productList = readProduct();
-        int id = productList.size();
-        return id;
-
-    }
 }
 
