@@ -4,9 +4,11 @@ import java.util.*;
 public class ManagerProduct extends ManagerCategory {
     private final Scanner input = new Scanner(System.in);
     List<Product> productList;
+    int id;
     public ManagerProduct(){
         productList = new ArrayList<>();
         productList = readProduct();
+        id = productList.size();
     }
     public int returnId() {
         showCategory();
@@ -26,16 +28,15 @@ public class ManagerProduct extends ManagerCategory {
         return checkI;
     }
     public void addProduct(int checkI) {
-        // returnId();
         try {
-            if (checkI >= 0) {
+            if (checkI >= 0){
                 System.out.println("Name");
                 String nameProduct = input.nextLine();
                 System.out.println("Price");
                 Double priceProduct = Double.parseDouble(input.nextLine());
                 System.out.println("Quantity");
                 int newQuantity = Integer.parseInt(input.nextLine());
-                Product newProduct = new Product(Product.getTemp(), nameProduct, priceProduct, newQuantity, categoryList.get(checkI));
+                Product newProduct = new Product(id++, nameProduct, priceProduct, newQuantity, categoryList.get(checkI));
                 productList.add(newProduct);
                 writeProduct(productList);
                 System.out.println("successful");
@@ -48,7 +49,7 @@ public class ManagerProduct extends ManagerCategory {
         }
     }
     public void editProduct (int checkI) {
-        displayProduct();
+        showAllProduct();
         try {
             if (checkI >= 0){
                 int checkId = -1;
@@ -67,7 +68,7 @@ public class ManagerProduct extends ManagerCategory {
                     System.out.println("New quantity");
                     int newQuantity = Integer.parseInt(input.nextLine());
                     productList = readProduct();
-                    productList.get(checkId).setId(Product.getTemp());
+                    productList.get(checkId).setId(checkId);
                     productList.get(checkId).setName(nameProduct);
                     productList.get(checkId).setPrice(priceProduct);
                     productList.get(checkId).setQuantity(newQuantity);
@@ -93,12 +94,6 @@ public class ManagerProduct extends ManagerCategory {
         }
         return name;
     }
-    public void displayProduct(){
-        productList = readProduct();
-        for (Product product: productList) {
-            System.out.println(product);
-        }
-    }
     public void showProduct(String name) {
         try {
             boolean contains = false;
@@ -107,7 +102,7 @@ public class ManagerProduct extends ManagerCategory {
                     contains = true;
                     break;
                 }
-            } if (contains){
+            } if (contains && checkEmpty()){
                 productList = readProduct();
                 for (Product display: productList) {
                     if(display.getCategory().getName().equals(name)){
@@ -115,12 +110,27 @@ public class ManagerProduct extends ManagerCategory {
                     }
                 }
             } else {
-                System.out.println("Name not found");
+                System.out.println("Name not found & no products");
             }
         } catch (Exception e){
             System.out.println("error, please re-enter");
         }
     }
+    public void showAllProduct(){
+        productList = readProduct();
+        if (checkEmpty()){
+            for (Product value: productList) {
+                System.out.println(value);
+            }
+        } else {
+            System.out.println("no product");
+        }
+    }
+    public boolean checkEmpty(){
+        productList = readProduct();
+        return productList.size() > 0;
+    }
+
     public List<Product> maxPrice(){
         List<Product> maxPrice = new ArrayList<>();
         if(productList.size() == 0){
@@ -216,6 +226,11 @@ public class ManagerProduct extends ManagerCategory {
         }
         return products;
     }
+    public int getId(){
+        productList = readProduct();
+        int id = productList.size();
+        return id;
 
+    }
 }
 

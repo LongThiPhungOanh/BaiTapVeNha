@@ -2,7 +2,6 @@ package aQBaiTap1;
 import java.io.Serializable;
 public class Product implements Serializable{
     private static final long serialUID = 123456789;
-    private static int temp = 1;
     private int id;
     private String name;
     private Double price;
@@ -10,18 +9,11 @@ public class Product implements Serializable{
     private int quantity;
     public Product() {}
     public Product(int id,String name, Double price,int quantity,Category category) {
-        this.id = temp;
-        temp++;
+        this.id = id;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
         this.category = category;
-    }
-    public static int getTemp() {
-        return temp;
-    }
-    public static void setTemp(int temp) {
-        Product.temp = temp;
     }
     public int getId() {
         return id;
@@ -61,6 +53,7 @@ public class Product implements Serializable{
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 ", category=" + category +
+                ", quantity=" + quantity +
                 '}';
     }
 }

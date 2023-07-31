@@ -2,11 +2,11 @@ package aQBaiTap1;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
-        try {
             Scanner scanner = new Scanner(System.in);
             ManagerProduct productManager = new ManagerProduct();
             boolean check = true;
             while (check) {
+                try {
                 System.out.println("===== Product Management System =====");
                 System.out.println("1. Add category");
                 System.out.println("2. Edit category");
@@ -17,6 +17,7 @@ public class Main {
                 System.out.println("7. Lowest Price Products and Most expensive price");
                 System.out.println("8. Search for product by name");
                 System.out.println("9. Search for product by price");
+                System.out.println("10. display all product");
                 System.out.println("0. Exit");
                 System.out.print("You choice: ");
                 int choice = scanner.nextInt();
@@ -48,13 +49,16 @@ public class Main {
                     case 9:
                         productManager.searchPrice();
                         break;
+                    case 10:
+                        productManager.showAllProduct();
+                        break;
                     case 0:
                         check = false;
                         break;
                 }
-            }
-        } catch (Exception e) {
-            System.out.println("error, please re-enter");
+            } catch (Exception e) {
+                    System.out.println("error, please re-enter");
+                }
         }
     }
 }
