@@ -8,6 +8,7 @@ public class ManagerCategory {
     List<Category> categoryList;
     public ManagerCategory(){
         categoryList = new ArrayList<>();
+        categoryList = read();
     }
     public void addCategory () {
         try {

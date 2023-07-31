@@ -6,6 +6,7 @@ public class ManagerProduct extends ManagerCategory {
     List<Product> productList;
     public ManagerProduct(){
         productList = new ArrayList<>();
+        productList = readProduct();
     }
     public int returnId() {
         showCategory();
